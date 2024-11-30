@@ -1,5 +1,31 @@
 baseURL: 'https://openknowledgehub.org/'
 languageCode: 'en-us'
 title: 'OpenKnoweledgeHub'
-theme: 'terminal'
-copyright: '© Jelmen Guhlke - 2024'
+theme: 'archie'
+copyright: '© Jelmen Guhlke'
+
+# Code Highlight
+pygmentsstyle: 'monokai'
+pygmentscodefences: true
+pygmentscodefencesguesssyntax: true
+
+disqusShortname: 'yourDisqusShortname'
+
+paginate: 3 # articles per page
+
+params:
+  mode: 'toggle'
+  useCDN: false # don't use CDNs for fonts and icons, instead serve them locally.
+  mathjax: true # enable MathJax support
+  katex: true # enable KaTeX support
+  
+  social:
+    - name: 'GitHub'
+      icon: 'github'
+      url: 'https://github.com/OpenKnowledgeHub/homepage'
+
+menu:
+  main:
+    - name: Home
+      url: /
+      weight: 1
