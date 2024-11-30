@@ -1,0 +1,4 @@
+baseURL = 'https://openknowledgehub.org/'
+languageCode = 'en-us'
+title = 'OpenKnoweledgeHub'
+theme = 'terminal'
