@@ -1,31 +1,30 @@
 baseURL: 'https://openknowledgehub.org/'
-languageCode: 'en-us'
+languageCode: 'de'
 title: 'OpenKnoweledgeHub'
-theme: 'archie'
-copyright: '© Jelmen Guhlke'
-
-# Code Highlight
-pygmentsstyle: 'monokai'
-pygmentscodefences: true
-pygmentscodefencesguesssyntax: true
-
-disqusShortname: 'yourDisqusShortname'
-
-paginate: 3 # articles per page
-
-params:
-  mode: 'toggle'
-  useCDN: false # don't use CDNs for fonts and icons, instead serve them locally.
-  mathjax: true # enable MathJax support
-  katex: true # enable KaTeX support
-  
-  social:
-    - name: 'GitHub'
-      icon: 'github'
-      url: 'https://github.com/OpenKnowledgeHub/homepage'
+theme: 'smol'
+copyright: 'Jelmen Guhlke'
 
 menu:
   main:
-    - name: Home
-      url: /
+    - name: Posts
+      identifier: posts
+      url: /posts/
       weight: 1
+    - name: Über
+      identifier: about
+      url: /about/
+      weight: 2
+    - name: Tags
+      identifier: tags
+      url: /tags/
+      weight: 3
+  footer:
+    - name: Github
+      url: https://github.com/OpenKnowledgeHub/homepage
+      weight: 1
+    - name: Impressum
+      url: /imprint/
+      weight: 2
+    - name: Datenschutzerklärung
+      url: /privacy-policy
+      weight: 3
