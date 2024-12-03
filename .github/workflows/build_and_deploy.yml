@@ -1,0 +1,64 @@
+name: build and deploy
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Setup hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 'latest'
+          extended: true
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Upload artefacts
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: okh-homepage
+          retention-days: 1
+          path: "./public"
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create deploy directory
+        run: mkdir ./public
+
+      - name: Download artefact
+        uses: actions/download-artifact@v4
+        with:
+          name: okh-homepage
+          path: ./public/
+
+      - name: Deploy
+        env:
+          DEPLOY_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-e -c -r --delete"
+          SERVER_PORT: ${{ secrets.SERVER_PORT }}
+          FOLDER: "./public/"
+          SERVER_IP: ${{ secrets.SERVER_IP }}
+          USERNAME: ${{ secrets.USERNAME }}
+          SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
+        run: bash ./ci/deploy.sh
