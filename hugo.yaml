@@ -22,9 +22,6 @@ menu:
     - name: Github
       url: https://github.com/OpenKnowledgeHub/homepage
       weight: 1
-    - name: Impressum
+    - name: Impressum und Datenschutz
       url: /imprint/
       weight: 2
-    - name: Datenschutzerklärung
-      url: /privacy-policy
-      weight: 3
