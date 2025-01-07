@@ -25,3 +25,20 @@ menu:
     - name: Impressum und Datenschutz
       url: /imprint/
       weight: 2
+
+markup:
+  highlight:
+    anchorLineNos: false
+    codeFences: true
+    guessSyntax: false
+    hl_Lines: ""
+    hl_inline: false
+    lineAnchors: ""
+    lineNoStart: 10
+    lineNos: true
+    lineNumbersInTable: false
+    noClasses: true
+    noHl: false
+    style: monokai
+    tabWidth: 2
+    wrapperClass: highlight
