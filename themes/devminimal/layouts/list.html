@@ -1,0 +1,31 @@
+{{ define "main" }}
+<div class="page-intro">
+  <h1>{{ .Site.Params.description }}</h1>
+</div>
+
+<ul class="post-list">
+  {{ range .Paginator.Pages }}
+  <li class="post-list-item">
+    <div class="post-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
+      {{ with .Params.tags }}
+      <div class="post-tags">
+        {{ range . }}<a class="tag" href="{{ "/tags/" | relURL }}{{ . | urlize }}">{{ . }}</a>{{ end }}
+      </div>
+      {{ end }}
+    </div>
+    <h2 class="post-list-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    {{ with .Summary }}<p class="post-summary">{{ . | plainify }}</p>{{ end }}
+  </li>
+  {{ end }}
+</ul>
+
+{{ with .Paginator }}
+{{ if gt .TotalPages 1 }}
+<nav class="pagination">
+  {{ if .HasPrev }}<a href="{{ .Prev.URL }}">← newer</a>{{ end }}
+  {{ if .HasNext }}<a href="{{ .Next.URL }}">older →</a>{{ end }}
+</nav>
+{{ end }}
+{{ end }}
+{{ end }}

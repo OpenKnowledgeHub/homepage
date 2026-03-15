@@ -11,6 +11,53 @@ tags:
   - security
 summary: Die Verwaltung von Berechtigungen ist essenziell für moderne Unternehmensanwendungen, besonders bei wachsender Komplexität und Nutzerzahl. Es wird immer wichtiger, Berechtigungen flexibel, sicher und skalierbar zu gestalten. Diese dreiteilige Artikelserie beleuchtet verschiedene Ansätze zur effizienten Implementierung und Verwaltung von Berechtigungen in Jakarta EE-Anwendungen – von den integrierten Bordmitteln bis hin zu externen, hochverfügbaren Systemen, um den vielfältigen Anforderungen gerecht zu werden.
 
+sources:
+  - id: 1
+    text: "Brian Foote und Joseph Yoder (1999): Big Ball of Mud. University of Illinois at Urbana-Champaign"
+    url: "http://www.laputan.org/mud/"
+  - id: 2
+    text: "Cornelsen Verlag GmbH (2025): Duden Online Berechtigung"
+    url: "https://www.duden.de/rechtschreibung/Berechtigung"
+  - id: 3
+    text: "Digitales Wörterbuch der deutschen Sprache (2025): Präfix be-"
+    url: "https://www.dwds.de/wb/be-"
+  - id: 4
+    text: "Arjan Tijms, Teo Bais und Werner Keil (2022): The Definitive Guide to Security in Jakarta EE. Apress Media, New York."
+  - id: 5
+    text: "Inc. Oracle America (2017): Java EE Security API Specification Version 1.0"
+    url: "https://javaee.github.io/securityspec/spec/jsr375-spec.html"
+  - id: 6
+    text: "Eclipse Foundation (2022): Jakarta Security Version 3.0"
+    url: "https://jakarta.ee/specifications/security/3.0/jakarta-security-spec-3.0.html"
+  - id: 7
+    text: "Eclipse Foundation (2024): Jakarta Security Version 4.0"
+    url: "https://jakarta.ee/specifications/security/4.0/jakarta-security-spec-4.0"
+  - id: 8
+    text: "Eclipse Foundation (2022): Release Jakarta EE 10"
+    url: "https://jakarta.ee/release/10/"
+  - id: 9
+    text: "Eclipse Foundation: Jakarta Authentication"
+    url: "https://jakarta.ee/specifications/authentication/"
+  - id: 10
+    text: "Eclipse Foundation: Jakarta Authorization"
+    url: "https://jakarta.ee/specifications/authorization/"
+  - id: 11
+    text: "Eclipse Foundation: Jakarta Security, Jakarta Authorization, and Jakarta Authentication Explained"
+    url: "https://jakarta.ee/learn/specification-guides/security-authorization-and-authentication-explained/"
+  - id: 12
+    text: "National Institute of Standards und Technology: Risk Adaptive (Adaptable) Access Control"
+    url: "https://csrc.nist.gov/glossary/term/Risk_Adaptive_Adaptable_Access_Control"
+  - id: 13
+    text: "Eclipse Foundation (2021): Jakarta Annotations Version 2.1.0"
+    url: "https://jakarta.ee/specifications/annotations/2.1/annotations-spec-2.1"
+  - id: 14
+    text: "Eclipse Foundation: Jakarta Enterprise Beans 4.0"
+    url: "https://jakarta.ee/specifications/enterprise-beans/4.0/jakarta-enterprise-beans-spec-core-4.0"
+  - id: 15
+    text: "Cloud Native Computing Foundation: Open Policy Agent"
+    url: "https://www.openpolicyagent.org/"
+sources_note: "alle angegebenen URLs wurde das letzte Mal am 04.02.2025 besucht."
+
 ---
 
 ## Moderne Berechtigungssteuerung in Jakarta EE
@@ -303,7 +350,7 @@ Optional<UserPrincipal> optionalUserPrincipal =
 if (optionalUserPrincipal.isPresent()) {
     UserPrincipal userPrincipal = optionalUserPrincipal.get();
     long departmentId = userPrincipal.getDepartmentId();
-    
+
     // do some checks with the departmentId
 }
 ```
@@ -323,36 +370,6 @@ oft in der community-getriebenen Open-Source Welt: Die positive Weiterentwicklun
 Im nächsten Teil der Serie soll ein Blick auf den *Open Policy Agent* [15] geworfen werden. Insbesondere soll
 beschrieben werden, wie dieser aufbauend auf *Jakarta Security* angebunden und gewinnbringend genutzt werden kann.
 
-## Quellen
-
-- [1] Brian Foote und Joseph Yoder (1999): Big Ball of Mud. University of Illinois at
-  Urbana-Champaign, http://www.laputan.org/mud/
-- [2] Cornelsen Verlag GmbH (2025): Duden Online Berechtigung. https://www.duden.de/rechtschreibung/Berechtigung
-- [3] Digitales Wörterbuch der deutschen Sprache (2025): Präfix be-. https://www.dwds.de/wb/be-
-- [4] Arjan Tijms, Teo Bais und Werner Keil (2022): The Definitive Guide to Security in Jakarta EE. Apress Media, New
-  York.
-- [5] Inc. Oracle America (2017): Java EE Security API Specification Version
-  1.0. https://javaee.github.io/securityspec/spec/jsr375-spec.html
-- [6] Eclipse Foundation (2022): Jakarta Security Version
-  3.0. https://jakarta.ee/specifications/security/3.0/jakarta-security-spec-3.0.html
-- [7] Eclipse Foundation (2024): Jakarta Security Version
-  4.0. https://jakarta.ee/specifications/security/4.0/jakarta-security-spec-4.0
-- [8] Eclipse Foundation (2022): Release Jakarta EE 10.
-  https://jakarta.ee/release/10/.
-- [9] Eclipse Foundation: Jakarta Authentication. https://jakarta.ee/specifications/authentication/.
-- [10] Eclipse Foundation: Jakarta Authorization. https://jakarta.ee/specifications/authorization/.
-- [11] Eclipse Foundation: Jakarta Security, Jakarta Authorization, and Jakarta Authentication
-  Explained. https://jakarta.ee/learn/specification-guides/security-authorization-and-authentication-explained/
-- [12] National Institute of Standards und Technology: Risk Adaptive (Adaptable) Access
-  Control. https://csrc.nist.gov/glossary/term/Risk_Adaptive_Adaptable_Access_Control.
-- [13] Eclipse Foundation (2021): Jakarta Annotations Version
-  2.1.0. https://jakarta.ee/specifications/annotations/2.1/annotations-spec-2.1.
-- [14] Eclipse Foundation: Jakarta Enterprise Beans 4.0.
-  https://jakarta.ee/specifications/enterprise-beans/4.0/jakarta-enterprise-beans-spec-core-4.0.
-- [15] Cloud Native Computing Foundation: Open Policy Agent.
-  https://www.openpolicyagent.org/.
-
-> alle angegebenen URLs wurde das letzte Mal am 04.02.2025 besucht.
-> Der Artikel ist zuerst im [Java aktuell Magazin 2/2025](https://www.ijug.eu/de/java-aktuell/zeitschrift/java-aktuell-archiv/detailansicht-java-aktuell/java-aktuell-02-2025/) erschien.
+> Der Artikel ist zuerst im [Java aktuell Magazin 2/2025](https://meine.doag.org/zeitschriften/id.223.java-aktuell-02-2025/) erschienen.
 
 

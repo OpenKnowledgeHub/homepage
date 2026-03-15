@@ -1,0 +1,19 @@
+{{ with .Params.sources }}
+<section class="post-sources">
+  <h2>Quellen</h2>
+  <ol>
+    {{ range . }}
+    <li id="source-{{ .id }}">
+      {{ if .url -}}
+        <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .text }}</a>
+      {{- else -}}
+        {{ .text }}
+      {{- end }}
+    </li>
+    {{ end }}
+  </ol>
+  {{ with $.Params.sources_note }}
+  <p class="sources-note"><em>{{ . }}</em></p>
+  {{ end }}
+</section>
+{{ end }}

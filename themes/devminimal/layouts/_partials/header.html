@@ -1,0 +1,11 @@
+<header class="site-header">
+  <a class="site-title" href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
+  <nav>
+    {{ range .Site.Menus.main }}
+      <a href="{{ .URL | relURL }}">{{ .Name }}</a>
+    {{ end }}
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span class="theme-toggle-icon"></span>
+    </button>
+  </nav>
+</header>

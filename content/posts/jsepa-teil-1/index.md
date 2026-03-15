@@ -11,16 +11,34 @@ tags:
   - refactoring
 summary: Das jSEPA Projekt ist etwas in die Jahre gekommen - es ist Zeit für ein umfangreiches Refactoring!
 
+sources:
+  - id: 1
+    text: "jSEPA auf GitHub"
+    url: "https://github.com/OpenKnowledgeHub/jSEPA"
+  - id: 2
+    text: "Wikipedia: Single Euro Payments Area (SEPA)"
+    url: "https://en.wikipedia.org/wiki/Single_Euro_Payments_Area"
+  - id: 3
+    text: "ISO 20022"
+    url: "https://www.iso20022.org/"
+  - id: 4
+    text: "ISO 20022: Payments Initiation Message Definitions"
+    url: "https://www.iso20022.org/iso-20022-message-definitions?search=Payments%20Initiation"
+  - id: 5
+    text: "SWIFT: BIC - Business Identifier Code"
+    url: "https://www.swift.com/standards/data-standards/bic-business-identifier-code"
+  - id: 6
+    text: "SWIFT: IBAN - International Bank Account Number"
+    url: "https://www.swift.com/standards/data-standards/iban-international-bank-account-number"
+
 ---
 
-Das Projekt [jSEPA](https://github.com/OpenKnowledgeHub/jSEPA) wurde ursprünglich von einem ehemaligen Arbeitskollegen
+Das Projekt jSEPA [1] wurde ursprünglich von einem ehemaligen Arbeitskollegen
 von mir entworfen und entwickelt. In erster Linie soll das Projekt eine Java Bibliothek anbieten, welche valide
-[SEPA](https://en.wikipedia.org/wiki/Single_Euro_Payments_Area) XML Dokumente erstellt, um diese zum Auslösen von
+SEPA [2] XML Dokumente erstellt, um diese zum Auslösen von
 Überweisungen und zum Auslösen vom Einzug mittels Lastschriftverfahren zu nutzen. Beide XML Schemas sind Bestandteil von
-dem [ISO 20022](https://www.iso20022.org/) Standard. Für alle Interessierten lege ich die Definition der einzelnen
-Nachrichtenbestandteile
-der [Zahlungs-Initiierung](https://www.iso20022.org/iso-20022-message-definitions?search=Payments%20Initiation) ans
-Herz.
+dem ISO 20022 [3] Standard. Für alle Interessierten lege ich die Definition der einzelnen
+Nachrichtenbestandteile der Zahlungs-Initiierung [4] ans Herz.
 
 ## Wieso sind wir hier?
 
@@ -45,9 +63,7 @@ Im Kern hat die jSEPA Bibliothek drei zentrale Features:
 
 - das Bereitstellen einer API zum Generieren von XML Dokumenten zum Auslösen von Überweisungen
 - das Bereitstellen einer API zum Generieren von XML Dokumenten zum Einziehen von Geldern mittels Lastschrift
-- das Bereitstellen einiger Hilfsmethoden
-  bezüglich [BIC](https://www.swift.com/standards/data-standards/bic-business-identifier-code)
-  und [IBAN](https://www.swift.com/standards/data-standards/iban-international-bank-account-number)
+- das Bereitstellen einiger Hilfsmethoden bezüglich BIC [5] und IBAN [6]
 
 Im ersten Schritt möchte ich die bestehende Code-Basis aufräumen, ohne dabei bestehende Funktionen zu überarbeiten. Dazu
 gehören unter anderem nicht genutzte Methoden, überflüssige Kommentare, unklare Dokumentationen.
@@ -72,6 +88,6 @@ Die Klasse BankInformationStore stellt einige statische Hilfsmethoden zur Verfü
 einem "Cache" (eine simple Map) von BankInformation Objekten kommuniziert. Diese enthalten Stammdaten von
 unterschiedlichen Banken. Aktuell sind nur deutsche Banken unterstützt. Im ersten Schritt werde ich diese Methoden nicht
 anfassen - bis klar ist, wie hier weiter vorgehen möchte. Fühlt euch eingeladen Tickets mit Ideen / Meinungen im
-[GitHub](https://github.com/OpenKnowledgeHub/jSEPA) Projekt zu eröffnen.
+GitHub-Projekt [1] zu eröffnen.
 
 

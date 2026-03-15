@@ -11,19 +11,49 @@ tags:
   - feature
   - jse24
 summary: Mit Java 24 kommen die Stream Gatherers aus der Preview Phase und werden offiziell released. Mit den Gatherers wird ein lang gehegter Wunsch vieler Java-Devs wahr - das Schreiben von eigenen Stream intermediate Operationen!
+
+sources:
+  - id: 1
+    text: "JEP 107: Bulk Data Operations for Collections"
+    url: "https://openjdk.org/jeps/107"
+  - id: 2
+    text: "JEP 109: Enhance Core Libraries with Lambda"
+    url: "https://openjdk.org/jeps/109"
+  - id: 3
+    text: "JEP 126: Lambda Expressions & Virtual Extension Methods"
+    url: "https://openjdk.org/jeps/126"
+  - id: 4
+    text: "OpenJDK 8 Release Page"
+    url: "https://openjdk.org/projects/jdk8/"
+  - id: 5
+    text: "JEP 269: Convenience Factory Methods for Collections"
+    url: "https://openjdk.org/jeps/269"
+  - id: 6
+    text: "JEP 461: Stream Gatherers (Preview)"
+    url: "https://openjdk.org/jeps/461"
+  - id: 7
+    text: "JEP 485: Stream Gatherers"
+    url: "https://openjdk.org/jeps/485"
+  - id: 8
+    text: "JDK 24 Projekt Seite"
+    url: "https://openjdk.org/projects/jdk/24/"
+  - id: 9
+    text: "Happy Coders: Stream Gatherers - write your own Stream operations"
+    url: "https://www.happycoders.eu/java/stream-gatherers/"
+
 ---
 
 ## Wo kommen wir her?
 
 Mit der Einführung der `Stream API` in Java SE 8 (insbesondere mit
-den [JEP 107 Bulk Data Operations for Collections](https://openjdk.org/jeps/107), [JEP 109 Enhance Core Libraries with Lambda](https://openjdk.org/jeps/109)
-und [JEP 126 Lambda Expressions & Virtual Extension Methods](https://openjdk.org/jeps/126)) haben sich die Möglichkeiten
+den JEP 107 Bulk Data Operations for Collections [1], JEP 109 Enhance Core Libraries with Lambda [2]
+und JEP 126 Lambda Expressions & Virtual Extension Methods [3]) haben sich die Möglichkeiten
 des "Wie" ein Java Projekt umgesetzt wird grundlegend erweitert. Durch die Annäherung und syntaktische Unterstützung von
 funktionaler Programmierung eröffnete sich ein ganz neuer Horizont für die Java Welt.
 
-Doch seit dem Start von OpenJDK 8 am 18.03.2014 ([Release Page](https://openjdk.org/projects/jdk8/)) haben sich kaum
+Doch seit dem Start von OpenJDK 8 am 18.03.2014 [4] haben sich kaum
 nennenswerte Erweiterungen in der API ergeben. Lediglich kleinere Anpassungen wie zum Beispiel der
-[JEP 269: Convenience Factory Methods for Collections](https://openjdk.org/jeps/269) in dem Java SE 9 Release haben
+JEP 269: Convenience Factory Methods for Collections [5] in dem Java SE 9 Release haben
 kleinere Features in den Umgang mit Streams gebracht.
 
 ## Aufbau Streams
@@ -90,13 +120,12 @@ generischen Lösung gesucht - die `Stream::gather(Gatherer)` Zwischenstufe soll 
 
 ## Aufbau eines `Gatherers`
 
-`Stream::gather` als *intermediate operation* und das `Gatherer` Interface kamen mit Java 22 als *Preview* in die Java
-Welt und werden mit Java 24 vollständig released. Wie auch schon bei den bestehenden Zwischenstufen ist ein `Gatherer`
+`Stream::gather` als *intermediate operation* und das `Gatherer` Interface kamen mit Java 22 als *Preview* [6] in die Java
+Welt und werden mit Java 24 [8] vollständig released [7]. Wie auch schon bei den bestehenden Zwischenstufen ist ein `Gatherer`
 recht simple zusammengefasst:
 
 > A *gatherer* represents a transform of the elements of a
-> stream
-> ([JEP 461](https://openjdk.org/jeps/461#:~:text=A%20gatherer%20represents%20a%20transform%20of%20the%20elements%20of%20a%20stream))
+> stream [6]
 
 Jedoch ist hierbei noch im Vorhinein festgelegt, wie genau die Transformation aussehen soll - genau hier liegen die
 Stärken der `Gatherer`.
@@ -340,10 +369,5 @@ Möglichkeiten der freien Konfigurationen bieten erstaunlich viel Freiräume und
 Anwendungsfälle. Gerade eine Kombination von `Gatherern` und `Generics` geben gerade für Framework-Entwicklungen viel
 Spielraum den Nutzer:innen der Stream API viel "Magie" anzubieten. Aber auch für die klassischen Applikationsanwendungen
 können clever genutzte `Gatherer` einen erheblichen Mehrwert im Bereich der Wartbarkeit durch Codereduzierungen bringen.
+Weiterführende Beispiele und Erklärungen finden sich in [9].
 
-## Quellen
-
-- [JDK 24 Projekt Seite](https://openjdk.org/projects/jdk/24/)
-- [JEP 485: Stream Gatherers](https://openjdk.org/jeps/485)
-- [JEP 461: Stream Gatherers (Preview)](https://openjdk.org/jeps/461)
-- [Happy Coders: Stream Gatherers - write your own Stream operations](https://www.happycoders.eu/java/stream-gatherers/)
