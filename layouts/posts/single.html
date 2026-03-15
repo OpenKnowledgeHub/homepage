@@ -1,0 +1,66 @@
+{{ define "main" }}
+<article>
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
+      {{ if .Params.readingTime }}· {{ .ReadingTime }} min{{ end }}
+      {{ with .Params.tags }}
+      <div class="post-tags">
+        {{ range . }}<a class="tag" href="{{ "/tags/" | relURL }}{{ . | urlize }}">{{ . }}</a>{{ end }}
+      </div>
+      {{ end }}
+    </div>
+    <h1 class="post-title">{{ .Title }}</h1>
+  </header>
+
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+
+  {{ partial "sources.html" . }}
+</article>
+
+{{ if .Params.sources }}
+<script>
+(function () {
+  var content = document.querySelector('.post-content');
+  if (!content) return;
+
+  var skip = new Set(['A', 'CODE', 'PRE', 'SCRIPT', 'STYLE']);
+
+  function linkifyTextNode(node) {
+    var text = node.nodeValue;
+    if (!/\[\d+\]/.test(text)) return;
+
+    var frag = document.createDocumentFragment();
+    var last = 0;
+    var re = /\[(\d+)\]/g;
+    var m;
+    while ((m = re.exec(text)) !== null) {
+      var id = 'source-' + m[1];
+      if (!document.getElementById(id)) continue;
+      if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+      var a = document.createElement('a');
+      a.href = '#' + id;
+      a.textContent = m[0];
+      a.className = 'source-ref';
+      frag.appendChild(a);
+      last = m.index + m[0].length;
+    }
+    if (!frag.childNodes.length) return;
+    if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+    node.parentNode.replaceChild(frag, node);
+  }
+
+  function walk(node) {
+    if (node.nodeType === Node.TEXT_NODE) { linkifyTextNode(node); return; }
+    if (node.nodeType !== Node.ELEMENT_NODE || skip.has(node.tagName)) return;
+    var children = Array.from(node.childNodes);
+    children.forEach(walk);
+  }
+
+  walk(content);
+})();
+</script>
+{{ end }}
+{{ end }}

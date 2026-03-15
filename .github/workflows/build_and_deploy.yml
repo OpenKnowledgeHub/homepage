@@ -6,6 +6,7 @@ on:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -55,7 +56,8 @@ jobs:
       - name: Deploy
         env:
           DEPLOY_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          ARGS: "-e -c -r --delete"
+          SERVER_HOST_KEY: ${{ secrets.SERVER_HOST_KEY }}
+          ARGS: "-a --checksum --delete"
           SERVER_PORT: ${{ secrets.SERVER_PORT }}
           FOLDER: "./public/"
           SERVER_IP: ${{ secrets.SERVER_IP }}

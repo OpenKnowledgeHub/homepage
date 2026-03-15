@@ -1,0 +1,6 @@
+{{ if .IsPage }}
+{{ $style := resources.Get "css/syntax.css" }}
+{{ if $style }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+{{ end }}
+{{ end }}

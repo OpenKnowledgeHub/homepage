@@ -1,23 +1,9 @@
-baseURL: 'https://openknowledgehub.org/'
 languageCode: 'de'
 title: 'OpenKnowledgeHub'
-theme: 'smol'
+theme: 'devminimal'
 copyright: 'OpenKnowledgeHub'
 
 menu:
-  main:
-    - name: Posts
-      identifier: posts
-      url: /posts/
-      weight: 1
-    - name: Über
-      identifier: about
-      url: /about/
-      weight: 2
-    - name: Tags
-      identifier: tags
-      url: /tags/
-      weight: 3
   footer:
     - name: Github
       url: https://github.com/OpenKnowledgeHub/homepage
